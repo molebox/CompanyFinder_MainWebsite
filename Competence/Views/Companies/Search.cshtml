@@ -1,0 +1,296 @@
+﻿@model TreeNodesViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+@inject IHtmlLocalizer<SharedResource> SharedHtmlLocalizer
+@*<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">*@
+<script src="~/js/fontawesome-all.js"></script>
+
+<div class="searchBackground">
+    <div class="searchWrapper">
+
+        <div class="result" id="companyBox">
+
+        </div>
+
+        <div class="filter" style="width: 40em;">
+            <form asp-controller="Companies" asp-action="SearchResultsAsync" data-ajax="true" data-ajax-method="POST" id="liveSearch">
+                <div class="card card-bigRaise" style="background-color:white;">
+                    <div class="card-header text-center infoFont" style="padding:1em;">@SharedLocalizer["Live Search"]</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div id="treeviewFocus" />
+                            </div>
+                            <div class="col">
+                                <div class="collapse" id="treeviewRoles" />
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+
+                            <h4 class="pull-left" style="padding:1em;">@SharedLocalizer["Matches Found:"] <span id="resultCount"></span></h4>
+
+                            <div style="padding:1em;">
+                                <a class="btn btn-primary  pull-right" asp-controller="Account" asp-action="Logout">@SharedLocalizer["Logout"]</a>
+                            </div>
+
+                        </div>
+                        <div id="resultCount"></div>
+                    </div>
+                </div>
+            </form>
+            @*<div class="text-center collapse centerPadding" style="align-self:center" id="loading"><h4 class="display-4">Searching....</h4><i class="material-icons">cached</i></div>*@
+            <div class="text-center collapse centerPadding" style="align-self:center" id="error"><h4 class="display-4">Something went wrong. Please refresh the page</h4><i class="material-icons">cached</i></div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap-treeview.js"></script>
+<!-- Custom Scroller Js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        var treeSearchData = [];
+        var treeFocusData = [];
+
+        function GetRolesTree() {
+
+            $.ajax({
+                type: 'GET',
+                url: '/Companies/GetTreeNodesAsync',
+                dataType: "json",
+            })
+                .done(function (response) {
+
+                    $("#treeviewRoles").treeview({
+                        data: response,
+                        showCheckbox: true,
+                        checkable: true,
+                        hierarchicalCheck: true,
+                        //selectable: true,
+                        onNodeChecked: function (event, data) {
+
+                            treeSearchData.push(data);// push the checked object to the array
+                            var nodeArray = data.nodes; //get the objects node array if it has one
+
+                            if (nodeArray != null) {
+                                nodeArray.forEach(function (item) {
+                                    treeSearchData.push(item);// loop through the objects node array and add each object to the array
+                                });
+                                Search(event);
+                            }
+                            else {
+                                Search(event);
+                            }
+
+                            //console.log(treeSearchData);
+                        },
+                        onNodeUnchecked: function (event, nodeData) {
+                            //nodeData is the checkbox that is being un-checked
+                            var nodeArray = nodeData.nodes; //get the objects node array if it has one
+
+                            if (nodeArray != null) {
+                                nodeArray.forEach(function (item) {
+                                    var removed = treeSearchData.map(function (item) { return item.id }).indexOf(item.id);// find the index of the node to remove
+                                    treeSearchData.splice(removed, 1);// remove the object from the array at the specified index
+                                    Search(event);
+                                });
+                            }
+                            else {
+                                var removed = treeSearchData.map(function (nodeData) { return nodeData.id }).indexOf(nodeData.id);// find the index of the node to remove
+                                treeSearchData.splice(removed, 1);// remove the object from the array at the specified index
+                                Search(event);
+                            }
+                        }
+                    })
+                    return response;
+                })
+                .fail(function (response) {
+                    console.log(response);
+                });
+        }
+
+        function GetFocusTree() {
+            $.ajax({
+                type: 'GET',
+                url: '/Companies/GetFocusNodesAsync',
+                dataType: "json",
+            })
+                .done(function (response) {
+
+                    $("#treeviewFocus").treeview({
+                        data: response,
+                        showCheckbox: true,
+                        checkable: true,
+                        hierarchicalCheck: true,
+                        expanded: true,
+                        onNodeChecked: function (event, data) {
+                            $('#treeviewRoles').show();
+                            treeFocusData.push(data);// push the checked object to the array
+                            var nodeArray = data.nodes; //get the objects node array if it has one
+
+
+                            if (nodeArray != null) {
+                                nodeArray.forEach(function (item) {
+                                    treeFocusData.push(item);// loop through the objects node array and add each object to the array
+                                });
+                                Search(event);
+                            }
+                            else {
+                                Search(event);
+                            }
+
+                        },
+                        onNodeUnchecked: function (event, nodeData) {
+                            //nodeData is the checkbox that is being un-checked
+                            var nodeArray = nodeData.nodes; //get the objects node array if it has one
+
+                            if (nodeArray != null) {
+                                nodeArray.forEach(function (item) {
+                                    var removed = treeFocusData.map(function (item) { return item.id }).indexOf(item.id);// find the index of the node to remove
+                                    treeFocusData.splice(removed, 1);// remove the object from the array at the specified index
+                                });
+                            }
+                            else {
+                                var removed = treeFocusData.map(function (nodeData) { return nodeData.id }).indexOf(nodeData.id);// find the index of the node to remove
+                                treeFocusData.splice(removed, 1);// remove the object from the array at the specified index
+                            }
+
+                            // If no focuses are selected hide the roles treeview - a focus must be selected
+                            if (treeFocusData.length <= 0) {
+                                $('#treeviewRoles').hide();
+                            }
+                        }
+                    })
+                    return response;
+                })
+                .fail(function (response) {
+                    console.log(response);
+                });
+
+        }
+
+        GetRolesTree();
+        GetFocusTree();
+
+        function GetRoles(rolesArray) {
+            var tempArray = [];
+            for (var i = 0; i < rolesArray.length; i++) {
+
+                var tempObj = {
+                    Name: rolesArray[i].text,
+                    Id: rolesArray[i].id,
+                }
+                tempArray.push(tempObj);
+            }
+            console.log(tempArray);
+            return tempArray;
+        }
+
+        function GetFocus(focusArray) {
+            var tempArray = [];
+
+            for (var i = 0; i < focusArray.length; i++) {
+                var tempObj = {
+                    Name: focusArray[i].text,
+                    Id: focusArray[i].id,
+                }
+                tempArray.push(tempObj);
+
+            }
+            console.log(tempArray);
+            return tempArray;
+        }
+
+        // Search method that get calls everytime a checkbox is clicked to implement a live search. Ajax request is sent to the sever with all the checked checkboxes.
+        function Search(e) {
+
+            var rolesNodes = GetRoles(treeSearchData);
+            var focusNodes = GetFocus(treeFocusData);
+
+            // Object to send to server with selected checkboxes
+            var selections = {
+                UniqueNodeArray: rolesNodes,
+                UniqueFocusNodeArray: focusNodes
+            };
+            //console.log(selections);
+
+            $('#companyBox').empty();
+            var newCard = "";
+            $('#resultCount').empty();
+            var resultCount = "";
+
+            e.preventDefault()
+            // Ajax post to server
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/Companies/SearchResultsAsync",
+                timeout: 5000,
+                //contentType: "application/json; charset=utf-8",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("XSRF-TOKEN",
+                        $('input:hidden[name="__RequestVerificationToken"]').val());
+                    $('#loading').show();
+
+                },
+                data: JSON.stringify(selections),
+                success: (function (data) {
+                    $('#loading').hide();
+                    //console.log(data);
+                    data.forEach(function (company) {
+
+                        // Create a new card for each company. Fill it in with the json response from the server
+                        newCard += '<div class="card" id=' + company.companyId + '>' +
+                            '<div class="card card-body card-raise">' +
+                            '<div class="card-header paddingTitle text-center infoFont" id="compHeader">' + company.companyName + '</div>' +
+                            '<div class="list-group">' +
+                            '<a href="#" class="list-group-item list-group-item-action align-middle primary-text-color" id="compContact">' + '<span><i class="material-icons align-middle" >person</i ></span>' + company.contactPerson + ' </a >' +
+                            '<a href="#" class="list-group-item list-group-item-action align-middle primary-text-color" id="compPhone">' + '<span> <i class="material-icons align-middle">contact_phone</i></span>' + company.phone + ' </a >' +
+                            '<a href="mailto:' + company.email + '" class="list-group-item list-group-item-action align-middle primary-text-color" data-placement="bottom" data-toggle="tooltip" title="Click to email" id="compEmail">' + '<span><i class="material-icons align-middle">email</i></span>' + company.email + ' </a >' +
+                            '<a href="http://' + company.website + '" class="list-group-item list-group-item-action align-middle primary-text-color" data-placement="bottom" data-toggle="tooltip" title="Go to website" id="compWebsite">' + '<span><i class="material-icons align-middle">home</i></span>' + company.website + '</a >' +
+                            '<a href="http://' + company.recruitmentWebAddress + '" class="list-group-item list-group-item-action align-middle primary-text-color" data-placement="bottom" data-toggle="tooltip" title="Go to website" id="compWebsite">' + '<span><i class="material-icons align-middle">work</i></span>' + company.recruitmentWebAddress + '</a >' +
+                            '<br />' +
+                            '<p class="lead card-footer" id= "compBio" >' + company.bio + '</p >' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>' +
+                            '<br/>';
+
+                    });
+                    $('#companyBox').hide().html(newCard).fadeIn(1000);
+                    // Create the results counter label and show the count
+                    //resultCount += ' <div class="card-footer">' + ' <h6>Matches found: ' + data.length + '</h6></div>';
+                    resultCount += data.length;
+                    $('#resultCount').hide().html(resultCount).fadeIn(1000);
+                }),
+                error: function () {
+                    $('#loading').hide();
+
+                    // If the server takes longer than 5 seconds to respond, show error message
+                    $('#error').show();
+                }
+            })
+
+        }
+    });
+
+
+</script>
+
+

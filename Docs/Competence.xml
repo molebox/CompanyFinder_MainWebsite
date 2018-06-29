@@ -1,0 +1,1119 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Competence</name>
+    </assembly>
+    <members>
+        <member name="T:Competence.Browsers.ClientBrowser">
+            <summary>
+            Client Browsers
+            </summary>
+        </member>
+        <member name="M:Competence.Browsers.ClientBrowser.#ctor(System.String)">
+            <summary>
+            Constructor to get the match
+            </summary>
+            <param name="userAgent"></param>
+        </member>
+        <member name="P:Competence.Browsers.ClientBrowser.Major">
+            <summary>
+            Major
+            </summary>
+        </member>
+        <member name="P:Competence.Browsers.ClientBrowser.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:Competence.Browsers.ClientBrowser.Version">
+            <summary>
+            Version number
+            </summary>
+        </member>
+        <member name="T:Competence.Browsers.ClientOS">
+            <summary>
+            Client OS
+            </summary>
+        </member>
+        <member name="M:Competence.Browsers.ClientOS.#ctor(System.String)">
+            <summary>
+            Constructor to get the OS's
+            </summary>
+            <param name="userAgent"></param>
+        </member>
+        <member name="P:Competence.Browsers.ClientOS.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:Competence.Browsers.ClientOS.Version">
+            <summary>
+            Version number
+            </summary>
+        </member>
+        <member name="T:Competence.Browsers.MatchExpression">
+            <summary>
+            Class to match the expressions
+            </summary>
+        </member>
+        <member name="P:Competence.Browsers.MatchExpression.Regexes">
+            <summary>
+            List of regeses
+            </summary>
+        </member>
+        <member name="P:Competence.Browsers.MatchExpression.Action">
+            <summary>
+            Action method
+            </summary>
+        </member>
+        <member name="T:Competence.Browsers.UserAgent">
+            <summary>
+            User Agent class to represent the user agent from the browser
+            </summary>
+        </member>
+        <member name="P:Competence.Browsers.UserAgent.Browser">
+            <summary>
+            Browser property
+            </summary>
+        </member>
+        <member name="P:Competence.Browsers.UserAgent.OS">
+            <summary>
+            OS property
+            </summary>
+        </member>
+        <member name="M:Competence.Browsers.UserAgent.#ctor(System.String)">
+            <summary>
+            User Agent property
+            </summary>
+            <param name="userAgent"></param>
+        </member>
+        <member name="T:Competence.Controllers.AccountController">
+            <summary>
+            Account controller used to responed to login requests
+            </summary>
+        </member>
+        <member name="M:Competence.Controllers.AccountController.#ctor(Microsoft.AspNetCore.Identity.UserManager{Microsoft.AspNetCore.Identity.IdentityUser},Microsoft.AspNetCore.Identity.SignInManager{Microsoft.AspNetCore.Identity.IdentityUser},Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Constructor to set the properties
+            </summary>
+            <param name="userMgr"></param>
+            <param name="signInMgr"></param>
+            <param name="Configuration"></param>
+        </member>
+        <member name="M:Competence.Controllers.AccountController.HomePageLogin(System.String)">
+            <summary>
+            Home page login method, allow anonymous indicates that authorization does not appy to this method
+            </summary>
+            <param name="returnUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Competence.Controllers.AccountController.HomePageLogin(Competence.ViewModels.HomePageViewModel,System.String)">
+            <summary>
+            Post method that checks the login for access to the search page. If login is good then the user is redirected to the search oage, if the login
+            is bad an error message is displayed
+            </summary>
+            <param name="homePageViewModel"></param>
+            <param name="returnUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Competence.Controllers.AccountController.Logout(System.String)">
+            <summary>
+            Logout method to close the session
+            </summary>
+            <param name="returnUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Competence.Controllers.CompaniesController">
+            <summary>
+            Company Controller. Handles the main website views.
+            </summary>
+        </member>
+        <member name="F:Competence.Controllers.CompaniesController.PageSizeMatch">
+            <summary>
+            Sets page size for the company match view for use with pagination
+            </summary>
+        </member>
+        <member name="M:Competence.Controllers.CompaniesController.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Localization.IStringLocalizer{Competence.Controllers.CompaniesController})">
+            <summary>
+            Company Controller constructor. Gets the context from the repo, also gets the context directly for use in certain methods
+            </summary>
+            <param name="Configuration"></param>
+            <param name="localizer"></param>
+        </member>
+        <member name="M:Competence.Controllers.CompaniesController.HomePageAsync(System.String,System.String)">
+            <summary>
+            GET to load the home page
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Competence.Controllers.CompaniesController.Search">
+            <summary>
+            The apps main page where the user does its search
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Competence.Controllers.CompaniesController.GetTreeNodesAsync(System.String)">
+            <summary>
+            Gets all the skills, programming languages and company focuses from the db via the repo and returns them to the view.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Competence.Controllers.CompaniesController.GetFocusNodesAsync(System.String)">
+            <summary>
+            Gets all the company focuses from the db via the repo and returns them to the view.
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Competence.Controllers.CompaniesController.SearchResultsAsync(Competence.ViewModels.SearchSelectionsViewModel)">
+            <summary>
+            Gets the posted checkbox selections and sends them to the repo which then checks the db for the matches. The matches are then placed in a static list.
+            </summary>
+            <param name="searchSelectionsViewModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Competence.Controllers.CompaniesController.SetLanguage(System.String,System.String)">
+            <summary>
+            Sets the languge
+            </summary>
+            <param name="culture"></param>
+            <param name="returnUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Competence.Controllers.StatusCodeController">
+            <summary>
+            Status code controller used to show custom error views
+            </summary>
+        </member>
+        <member name="M:Competence.Controllers.StatusCodeController.Index(System.Int32)">
+            <summary>
+            Method to show the status code view
+            </summary>
+            <param name="statusCode"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Competence.Infrastructure.PageLinkTagHelper">
+            <summary>
+            Custom tag helper class that builds a pagination tag helper for switching pages depending on the amount of content
+            </summary>
+        </member>
+        <member name="M:Competence.Infrastructure.PageLinkTagHelper.#ctor(Microsoft.AspNetCore.Mvc.Routing.IUrlHelperFactory)">
+            <summary>
+            Page link constructor that takes the UrlHelperFactory interface as a parameter and initializes it.
+            </summary>
+            <param name="helperFactory"></param>
+        </member>
+        <member name="P:Competence.Infrastructure.PageLinkTagHelper.ViewContext">
+            <summary>
+            View Context object
+            </summary>
+        </member>
+        <member name="P:Competence.Infrastructure.PageLinkTagHelper.PageModel">
+            <summary>
+            Page info view model object
+            </summary>
+        </member>
+        <member name="P:Competence.Infrastructure.PageLinkTagHelper.PageAction">
+            <summary>
+            Page action to indicate the action the page should call
+            </summary>
+        </member>
+        <member name="P:Competence.Infrastructure.PageLinkTagHelper.PageClassesEnabled">
+            <summary>
+            Page classes bool
+            </summary>
+        </member>
+        <member name="P:Competence.Infrastructure.PageLinkTagHelper.PageClass">
+            <summary>
+            Page class for btn
+            </summary>
+        </member>
+        <member name="P:Competence.Infrastructure.PageLinkTagHelper.PageClassNormal">
+            <summary>
+            Page class property
+            </summary>
+        </member>
+        <member name="P:Competence.Infrastructure.PageLinkTagHelper.PageClassSelected">
+            <summary>
+            Page class property
+            </summary>
+        </member>
+        <member name="M:Competence.Infrastructure.PageLinkTagHelper.Process(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext,Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput)">
+            <summary>
+            Custom tag helper to display item on a new page.
+            </summary>
+            <param name="tagHelperContext"></param>
+            <param name="output"></param>
+        </member>
+        <member name="T:Competence.Models.AppIdentityDbContext">
+            <summary>
+            Identity context
+            </summary>
+        </member>
+        <member name="M:Competence.Models.AppIdentityDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Competence.Models.AppIdentityDbContext})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="T:Competence.Models.Companies">
+            <summary>
+            Company model
+            </summary>
+        </member>
+        <member name="P:Competence.Models.Companies.CompanyId">
+            <summary>
+            Company id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.Companies.CompanyName">
+            <summary>
+            Company Name
+            </summary>
+        </member>
+        <member name="P:Competence.Models.Companies.ContactPerson">
+            <summary>
+            Contact Person
+            </summary>
+        </member>
+        <member name="P:Competence.Models.Companies.Email">
+            <summary>
+            Email Address
+            </summary>
+        </member>
+        <member name="P:Competence.Models.Companies.Bio">
+            <summary>
+            Company Biography
+            </summary>
+        </member>
+        <member name="P:Competence.Models.Companies.Website">
+            <summary>
+            Company Website
+            </summary>
+        </member>
+        <member name="P:Competence.Models.Companies.Phone">
+            <summary>
+            Company Phone
+            </summary>
+        </member>
+        <member name="P:Competence.Models.Companies.CompanySkills">
+            <summary>
+            Company Skills
+            </summary>
+        </member>
+        <member name="P:Competence.Models.Companies.CompanyDetails">
+            <summary>
+            Company Details
+            </summary>
+        </member>
+        <member name="P:Competence.Models.Companies.CompanyFocuses">
+            <summary>
+            Company Focuses
+            </summary>
+        </member>
+        <member name="P:Competence.Models.Companies.SkillList">
+            <summary>
+            Skill list
+            </summary>
+        </member>
+        <member name="P:Competence.Models.Companies.DetailList">
+            <summary>
+            Detail list
+            </summary>
+        </member>
+        <member name="P:Competence.Models.Companies.TemplateStatus">
+            <summary>
+            Template status
+            </summary>
+        </member>
+        <member name="T:Competence.Models.CompanyDetails">
+            <summary>
+            Company details model
+            </summary>
+        </member>
+        <member name="P:Competence.Models.CompanyDetails.CompanyDetailsId">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.CompanyDetails.CompanyId">
+            <summary>
+            Company id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.CompanyDetails.SkillDetailId">
+            <summary>
+            Detail id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.CompanyDetails.Company">
+            <summary>
+            Company object
+            </summary>
+        </member>
+        <member name="P:Competence.Models.CompanyDetails.SkillDetail">
+            <summary>
+            Detail object
+            </summary>
+        </member>
+        <member name="T:Competence.Models.CompanyFocus">
+            <summary>
+            Company focus model
+            </summary>
+        </member>
+        <member name="P:Competence.Models.CompanyFocus.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.CompanyFocus.CompanyId">
+            <summary>
+            Company id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.CompanyFocus.FocusId">
+            <summary>
+            Focus id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.CompanyFocus.Company">
+            <summary>
+            Company object
+            </summary>
+        </member>
+        <member name="P:Competence.Models.CompanyFocus.Focus">
+            <summary>
+            Focus Object
+            </summary>
+        </member>
+        <member name="T:Competence.Models.CompanySkills">
+            <summary>
+            Company skills model
+            </summary>
+        </member>
+        <member name="P:Competence.Models.CompanySkills.CompSkillId">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.CompanySkills.CompanyId">
+            <summary>
+            Company id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.CompanySkills.SkillId">
+            <summary>
+            Skill id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.CompanySkills.Company">
+            <summary>
+            Company object
+            </summary>
+        </member>
+        <member name="P:Competence.Models.CompanySkills.SkillSet">
+            <summary>
+            Skill object
+            </summary>
+        </member>
+        <member name="T:Competence.Models.Converter">
+            <summary>
+            Handles the Json Serializer settings
+            </summary>
+        </member>
+        <member name="F:Competence.Models.Converter.Settings">
+            <summary>
+            Statis method to set the Json Serializer settings
+            </summary>
+        </member>
+        <member name="T:Competence.Models.ErrorViewModel">
+            <summary>
+            Error view model not currently used but will be implemented in the future
+            </summary>
+        </member>
+        <member name="P:Competence.Models.ErrorViewModel.RequestId">
+            <summary>
+            The requested id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.ErrorViewModel.ShowRequestId">
+            <summary>
+            Checks the id
+            </summary>
+        </member>
+        <member name="T:Competence.Models.Focus">
+            <summary>
+            Focus model
+            </summary>
+        </member>
+        <member name="P:Competence.Models.Focus.FocusId">
+            <summary>
+            Focus id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.Focus.FocusType">
+            <summary>
+            Focus name
+            </summary>
+        </member>
+        <member name="P:Competence.Models.Focus.Companies">
+            <summary>
+            Linked companies
+            </summary>
+        </member>
+        <member name="T:Competence.Models.FocusNodes">
+            <summary>
+            FocusNdoes model
+            </summary>
+        </member>
+        <member name="P:Competence.Models.FocusNodes.Id">
+            <summary>
+            Node id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.FocusNodes.Name">
+            <summary>
+            Node name
+            </summary>
+        </member>
+        <member name="P:Competence.Models.FocusNodes.ParentId">
+            <summary>
+            Parent id, can be null
+            </summary>
+        </member>
+        <member name="P:Competence.Models.FocusNodes.OrderNumber">
+            <summary>
+            Order number
+            </summary>
+        </member>
+        <member name="P:Competence.Models.FocusNodes.Parent">
+            <summary>
+            Node parent
+            </summary>
+        </member>
+        <member name="P:Competence.Models.FocusNodes.Children">
+            <summary>
+            Nodes children
+            </summary>
+        </member>
+        <member name="T:Competence.Models.HomePage">
+            <summary>
+            Homepage model
+            </summary>
+        </member>
+        <member name="P:Competence.Models.HomePage.Id">
+            <summary>
+            Home page tagline id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.HomePage.TagLine">
+            <summary>
+            Tagline
+            </summary>
+        </member>
+        <member name="T:Competence.Models.SkillDetail">
+            <summary>
+            Skill detail model
+            </summary>
+        </member>
+        <member name="P:Competence.Models.SkillDetail.SkillDetailId">
+            <summary>
+            Detail id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.SkillDetail.DetailName">
+            <summary>
+            Deatil name
+            </summary>
+        </member>
+        <member name="P:Competence.Models.SkillDetail.Companies">
+            <summary>
+            Linked companies
+            </summary>
+        </member>
+        <member name="T:Competence.Models.SkillSet">
+            <summary>
+            Skill model
+            </summary>
+        </member>
+        <member name="P:Competence.Models.SkillSet.SkillId">
+            <summary>
+            Skill id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.SkillSet.SkillName">
+            <summary>
+            Skill id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.SkillSet.Companies">
+            <summary>
+            Linked companies
+            </summary>
+        </member>
+        <member name="T:Competence.Models.TreeNodes">
+            <summary>
+            The treeview nodes
+            </summary>
+        </member>
+        <member name="P:Competence.Models.TreeNodes.Id">
+            <summary>
+            The node id
+            </summary>
+        </member>
+        <member name="P:Competence.Models.TreeNodes.Name">
+            <summary>
+            The node name
+            </summary>
+        </member>
+        <member name="P:Competence.Models.TreeNodes.ParentId">
+            <summary>
+            The nodes parent id, can be null
+            </summary>
+        </member>
+        <member name="P:Competence.Models.TreeNodes.OrderNumber">
+            <summary>
+            The nodes order number in the db
+            </summary>
+        </member>
+        <member name="P:Competence.Models.TreeNodes.Parent">
+            <summary>
+            The nodes parent
+            </summary>
+        </member>
+        <member name="P:Competence.Models.TreeNodes.Children">
+            <summary>
+            The nodes children
+            </summary>
+        </member>
+        <member name="T:Competence.Program">
+            <summary>
+            Main entry point to the program
+            </summary>
+        </member>
+        <member name="M:Competence.Program.Main(System.String[])">
+            <summary>
+            The app is run through a console application, it is built here
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Competence.Program.BuildWebHost(System.String[])">
+            <summary>
+            Method to set the startup class as the main configuration class for the program. Tell the program to use kestral and iss integration
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Competence.SharedResource">
+            <summary>
+            Dummy class required to create IStringLocalizer instance
+            </summary>
+        </member>
+        <member name="T:Competence.Startup">
+            <summary>
+            Start up class that runs when the program is started
+            </summary>
+        </member>
+        <member name="M:Competence.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Start up constructor that takes the IConfiguration interface as a parameter
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:Competence.Startup.Configuration">
+            <summary>
+            Object of IConfiguration interface
+            </summary>
+        </member>
+        <member name="M:Competence.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Competence.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILoggerFactory,System.IServiceProvider)">
+            <summary>
+            This method gets called by the runtime. 
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <param name="loggerFactory"></param>
+            <param name="serviceProvider"></param>
+        </member>
+        <member name="T:Competence.ViewModels.AddFocusViewModel">
+            <summary>
+            View model to represent the focus model
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.AddFocusViewModel.FocusId">
+            <summary>
+            Focus Id
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.AddFocusViewModel.FocusType">
+            <summary>
+            Focus Name
+            </summary>
+        </member>
+        <member name="T:Competence.ViewModels.AddSkillDetailsViewModel">
+            <summary>
+            View model to represent the details model
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.AddSkillDetailsViewModel.SkillDetailId">
+            <summary>
+            The detail id
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.AddSkillDetailsViewModel.DetailName">
+            <summary>
+            The detail name
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.AddSkillDetailsViewModel.Success">
+            <summary>
+            Bool to check if the db successfully added the new detail to the db. Not currently in use
+            </summary>
+        </member>
+        <member name="M:Competence.ViewModels.AddSkillDetailsViewModel.#ctor">
+            <summary>
+            Constructor to set the success bool to false as default
+            </summary>
+        </member>
+        <member name="T:Competence.ViewModels.AddSkillsViewModel">
+            <summary>
+            View model to represent the skills model
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.AddSkillsViewModel.SkillId">
+            <summary>
+            Skill id
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.AddSkillsViewModel.SkillName">
+            <summary>
+            Skill name
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.AddSkillsViewModel.Success">
+            <summary>
+            Bool to check if the db successfully added the new skill to the db. Not currently in use
+            </summary>
+        </member>
+        <member name="M:Competence.ViewModels.AddSkillsViewModel.#ctor">
+            <summary>
+            Constructor to set the success bool to false as default
+            </summary>
+        </member>
+        <member name="T:Competence.ViewModels.AdminViewModel">
+            <summary>
+            Admin view model for the admin login
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.AdminViewModel.AdminID">
+            <summary>
+            The admin id
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.AdminViewModel.AdminName">
+            <summary>
+            The Admin username
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.AdminViewModel.AdminPassword">
+            <summary>
+            The admin password
+            </summary>
+        </member>
+        <member name="T:Competence.ViewModels.CompanyEditorViewModel">
+            <summary>
+            Company Editor view model for creating and editing companies in the db
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyEditorViewModel.CompanyId">
+            <summary>
+            The company id
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyEditorViewModel.CompanyName">
+            <summary>
+            The company name
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyEditorViewModel.ContactPerson">
+            <summary>
+            The contact person
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyEditorViewModel.Email">
+            <summary>
+            The contact email
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyEditorViewModel.Bio">
+            <summary>
+            The company biography
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyEditorViewModel.Website">
+            <summary>
+            The company website address
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyEditorViewModel.Phone">
+            <summary>
+            The contact phone number
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyEditorViewModel.IsProductCompany">
+            <summary>
+            Bool to set if the company is a production company
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyEditorViewModel.IsConsultantCompany">
+            <summary>
+            Bool to set if the company is a consultancy company
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyEditorViewModel.IsInternalSystemCompany">
+            <summary>
+            Bool to set if the company is a internal systems company
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyEditorViewModel.Company">
+            <summary>
+            Company object to hold the actual company
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyEditorViewModel.SkillSetsList">
+            <summary>
+            List of the associated skillsets
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyEditorViewModel.SkillDetailsList">
+            <summary>
+            List of the associated details
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyEditorViewModel.FocusList">
+            <summary>
+            List of all the focuses
+            </summary>
+        </member>
+        <member name="T:Competence.ViewModels.CompanyListViewModel">
+            <summary>
+            View model to return a list of companies for the search match
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyListViewModel.Companies">
+            <summary>
+            IEnummerable of companies
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyListViewModel.PagingInfo">
+            <summary>
+            Paging info view model object
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyListViewModel.SelectedSkillsFromSearch">
+            <summary>
+            List of the searched skills
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyListViewModel.SelectedDetailsFromSearch">
+            <summary>
+            List of the search details
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyListViewModel.ProductComp">
+            <summary>
+            Bool to check if the company is a production company
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyListViewModel.ConsultComp">
+            <summary>
+            Bool to check if the company is a consultancy company
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyListViewModel.InternalComp">
+            <summary>
+            Bool to check if the company is a internal systems company
+            </summary>
+        </member>
+        <member name="T:Competence.ViewModels.CompanyViewModel">
+            <summary>
+            View model to show the matched companies
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyViewModel.CompanyToShow">
+            <summary>
+            Company object to represent the matched company
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.CompanyViewModel.MatchedCompanies">
+            <summary>
+            List of the matched companies
+            </summary>
+        </member>
+        <member name="M:Competence.ViewModels.CompanyViewModel.#ctor">
+            <summary>
+            View model constructor that initializes the lists
+            </summary>
+        </member>
+        <member name="T:Competence.ViewModels.FocusNodeViewModel">
+            <summary>
+            Focus view model for the focus tree view
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.FocusNodeViewModel.Text">
+            <summary>
+            The name of the focus node
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.FocusNodeViewModel.Id">
+            <summary>
+            The focus tree node id
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.FocusNodeViewModel.ParentId">
+            <summary>
+            The nodes parents id, can be null. The root node is null
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.FocusNodeViewModel.Nodes">
+            <summary>
+            List of the children nodes
+            </summary>
+        </member>
+        <member name="T:Competence.ViewModels.HomePageViewModel">
+            <summary>
+            ViewModel to pass homepage data from db to view
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.HomePageViewModel.Tagline">
+            <summary>
+            Tagline for the home page
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.HomePageViewModel.SearchUsername">
+            <summary>
+            Username to access the search
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.HomePageViewModel.SearchPassword">
+            <summary>
+            Password to access the search
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.HomePageViewModel.ReturnUrl">
+            <summary>
+            The return url
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.HomePageViewModel.UserAgent">
+            <summary>
+            User Agent object
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.HomePageViewModel.User">
+            <summary>
+            User
+            </summary>
+        </member>
+        <member name="T:Competence.ViewModels.PagingInfoViewModel">
+            <summary>
+            Page info view model used to show/set items on a page
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.PagingInfoViewModel.TotalItems">
+            <summary>
+            The total items on a page
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.PagingInfoViewModel.ItemsPerPage">
+            <summary>
+            Sets how many items are allowed on a page
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.PagingInfoViewModel.CurrentPage">
+            <summary>
+            The current page number
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.PagingInfoViewModel.TotalPages">
+            <summary>
+            Method to set how many pages there should be given how many items there are in total
+            </summary>
+        </member>
+        <member name="T:Competence.ViewModels.SearchResultsViewModel">
+            <summary>
+            View model for the search results
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SearchResultsViewModel.CompanyId">
+            <summary>
+            Company Id
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SearchResultsViewModel.CompanyName">
+            <summary>
+            Compnay Name
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SearchResultsViewModel.ContactPerson">
+            <summary>
+            Contact Person
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SearchResultsViewModel.Email">
+            <summary>
+            Company Email
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SearchResultsViewModel.Bio">
+            <summary>
+            Company biography
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SearchResultsViewModel.Website">
+            <summary>
+            Company website
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SearchResultsViewModel.Phone">
+            <summary>
+            Company Phone
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SearchResultsViewModel.RecruitmentWebAddress">
+            <summary>
+            Company recruitment web address
+            </summary>
+        </member>
+        <member name="T:Competence.ViewModels.SearchSelectionsViewModel">
+            <summary>
+            View Model to hold the Ajax request from the client
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SearchSelectionsViewModel.UniqueNodeArray">
+            <summary>
+            Unique node array with selected roles checkboxes
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SearchSelectionsViewModel.UniqueFocusNodeArray">
+            <summary>
+            Unique node array with selected focus checkboxes
+            </summary>
+        </member>
+        <member name="T:Competence.ViewModels.SkillsAndDetailListViewModel">
+            <summary>
+            View model for the admin skills and details view. Used when viewing all the skills and details in the db
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SkillsAndDetailListViewModel.SkillSets">
+            <summary>
+            IEnummeration of the skill sets
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SkillsAndDetailListViewModel.SkillDetails">
+            <summary>
+            IEnummeration of the details
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SkillsAndDetailListViewModel.Focuses">
+            <summary>
+            IEnummeration of the focuses
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SkillsAndDetailListViewModel.PagingInfo">
+            <summary>
+            Page info opbject
+            </summary>
+        </member>
+        <member name="T:Competence.ViewModels.SkillsViewModel">
+            <summary>
+            View model to show the skills
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SkillsViewModel.Companies">
+            <summary>
+            List of all the companies in the database
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SkillsViewModel.SkillSetsList">
+            <summary>
+            List of the skills
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SkillsViewModel.SkillDetailsList">
+            <summary>
+            List of the details
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SkillsViewModel.FocusList">
+            <summary>
+            List of the Focuses
+            </summary>
+        </member>
+        <member name="M:Competence.ViewModels.SkillsViewModel.#ctor">
+            <summary>
+            view model constructor that initializes the lists
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SkillsViewModel.IsProductComp">
+            <summary>
+            Bool for production company
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SkillsViewModel.IsConsultancyComp">
+            <summary>
+            Bool for consultancy company
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.SkillsViewModel.IsInternalSystemsComp">
+            <summary>
+            Bool for internal systems company
+            </summary>
+        </member>
+        <member name="T:Competence.ViewModels.TagLineViewModel">
+            <summary>
+            View model to represent the homepage tagline
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.TagLineViewModel.Id">
+            <summary>
+            Tagline Id
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.TagLineViewModel.Tagline">
+            <summary>
+            Tagline for the home page
+            </summary>
+        </member>
+        <member name="T:Competence.ViewModels.TreeNodesViewModel">
+            <summary>
+            View model for the treeview
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.TreeNodesViewModel.Text">
+            <summary>
+            The name of the node
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.TreeNodesViewModel.Id">
+            <summary>
+            The tree node id
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.TreeNodesViewModel.ParentId">
+            <summary>
+            The nodes parents id, can be null. The root node is null
+            </summary>
+        </member>
+        <member name="P:Competence.ViewModels.TreeNodesViewModel.Nodes">
+            <summary>
+            List of the children nodes
+            </summary>
+        </member>
+    </members>
+</doc>

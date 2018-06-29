@@ -1,0 +1,16 @@
+﻿@model HomePageViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+@inject IHtmlLocalizer<SharedResource> SharedHtmlLocalizer
+
+
+<div class="stage">
+    <div class="stage-caption">
+        <h1 class="display-2 checkboxFont">@SharedLocalizer["Competence Match"]</h1>
+        <p style="color: black; padding-bottom:30px;">@Model.Tagline</p>
+        <a class="btn btn-primary outline cardBorder" asp-controller="Account" asp-action="HomePageLogin">@SharedLocalizer["Login"]</a>
+
+    </div>
+</div>

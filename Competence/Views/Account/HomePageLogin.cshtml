@@ -1,0 +1,36 @@
+﻿@model HomePageViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IViewLocalizer Localizer
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+@inject IHtmlLocalizer<SharedResource> SharedHtmlLocalizer
+
+
+<div class="stage">
+    <div class="stage-caption">
+        <h1 class="display-2 checkboxFont">@SharedLocalizer["Competence Match"]</h1>
+        <p style="color: black; padding-bottom:30px;">@Model.Tagline</p>
+
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="card card-bigRaise" style="height:75px;opacity:0.5;">
+            <div class="card-body">
+                <form asp-action="HomePageLogin" asp-controller="Account" method="post">
+                    <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+                    <div class="form-row">
+                        <div class="col">
+                            <input asp-for="SearchUsername" class="form-control  form-control-sm" placeholder="@SharedLocalizer["Username"]" />
+                        </div>
+                        <div class="col">
+                            <input asp-for="SearchPassword" class="form-control  form-control-sm" placeholder="@SharedLocalizer["Password"]" />
+                        </div>
+                        <div class="col">
+                            <input type="submit" value="@SharedLocalizer["Login"]" class="btn btn-primary" style="border-radius:5px;" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+

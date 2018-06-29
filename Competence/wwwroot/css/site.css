@@ -1,0 +1,863 @@
+﻿@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
+html,
+body {
+    height: 100%; 
+    /*overflow-x:hidden;*/
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
+}
+
+.searchBackground {
+    background: url('../images/laptop-from-above.jpg') center center no-repeat;
+    position: absolute;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-attachment: fixed;
+    height: 100vh;
+    overflow:auto;
+}
+
+.searchWrapper {
+    display: grid;  
+    grid-template-columns: 40% 60%;
+    grid-template-rows: auto;
+    grid-template-areas: "filter result";
+}
+
+.filter {
+    margin: 1em;
+    grid-area: filter;
+    /*position: fixed;*/
+    /*position: -webkit-sticky;*/
+    /*top: 0;*/
+    height: 100vh;
+}
+
+
+
+.result {
+    padding: 2em;
+    grid-area: result;    
+}
+
+.card{
+    font-size: 1.5rem;
+}
+
+
+/*.searchResults{
+    display:grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap:2em;
+}
+
+    .searchResults > div {
+        padding: 1em;
+        margin: 1em;
+        
+    }*/
+
+
+/*.searchFilter {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 1em;
+    position: sticky;
+    top: 0;
+    margin: 1em;
+    grid-area: filter;
+ 
+}*/
+
+/*.filter{
+    grid-area: filter;
+}
+
+.results{
+    grid-area: results;
+}
+
+.wrapper{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas:
+        "filter"
+        "results";
+}*/
+
+
+
+/*Mobile*/
+/*@media only screen and (min-width: 500px) {
+    .searchResults {
+        grid-template-columns: 100%;
+        grid-template-areas: 
+            "filter" 
+            "results";
+    }
+}*/
+/*Tablet*/
+/*@media only screen and (min-width: 768px) {
+    .searchResults {
+        grid-template-columns: 100%;
+        grid-template-areas: 
+            "filter" 
+            "results";
+    }
+}*/
+/*Tablet and small laptops*/
+/*@media only screen and (max-width: 992px) {
+    .searchResults {
+        grid-template-columns: 100%;
+        grid-template-areas: "filter" "results";
+    }
+}*/
+/*Desktops*/
+/*@media only screen and (min-width: 1200px) {
+    .searchResults {
+        grid-template-columns: 50% 45% 5%;
+        grid-template-areas: "filter results .";
+    }
+}*/
+
+
+.rowBackground {
+    background-color: #c18cd8;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #c18cd8;
+}
+
+.marginCompMatchName{
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.infoFont{
+    font-size:22px;
+}
+
+.cardBorder {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #694D75;
+    border-radius: 6px;
+    /*border-top-left-radius: 3px;
+    border-top-right-radius: 3px;*/
+}
+
+
+/*Fixes checkbox and label alignment*/
+.custom-file-control, .form-control, input::placeholder, label {
+    line-height: 1.5;
+}
+
+/*Fixes colour of checked box*/
+.custom-control-input:checked ~ .custom-control-indicator {
+    color:#fff;
+    background-color: #694D75;
+    box-shadow:none;
+}
+
+/*About us image sizing*/
+
+.aboutUsCard{
+    max-width: 100%;
+    height: auto;
+}
+
+.aboutImageSize {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+    .aboutImageSize.hover {
+        box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+    }
+
+
+.aboutUsPadding{
+    padding: 40px;
+}
+
+
+.imageSize{
+   width: 400px;
+   border: 1px solid #ddd;
+   padding: 5px;
+}
+
+    .imageSize.hover {
+        box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+    }
+
+
+
+.stage {
+    background: url("https://static.pexels.com/photos/273238/pexels-photo-273238.jpeg") center center no-repeat;
+    -ms-background-size: cover;
+    background-size: cover;
+    color: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    -ms-align-items: center;
+    -o-align-items: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.stage-caption {
+    font-size: 1.4rem;
+    font-weight: 200;
+    max-width: 60rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.stage-caption h1 {
+    color: black;
+}
+
+.feature-content {
+    padding: 8rem 0;
+    overflow: hidden;
+}
+
+.feature-dark {
+    background: #212121;
+    color: white;
+}
+
+.feature-dark h2 {
+    color: white;
+}
+
+#feature-one {
+    background: #e8e8e8;
+    height: 100%;
+}
+
+.allPages {
+    background: #e8e8e8;
+}
+
+.navColour {
+    background-color: #212121;
+    
+}
+#Nav a{
+    color: white;
+    text-decoration:none;
+    font-family: "Roboto";
+    font-weight: lighter;
+}
+
+#Nav a:hover {
+    color: grey;
+   
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+.material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+}
+.downIconPadding {
+    padding-top: 100px;
+}
+
+
+.paddingTitle{
+    padding-top: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.grow {
+    transition: all .2s ease-in-out;
+}
+
+    .grow:hover {
+        transform: scale(1.3);
+    }
+
+
+.iconSpace {
+    margin-right: 15px;
+}
+
+
+
+@media screen and (min-width: 991px) {
+    
+    .feature-content {
+        display: flex;
+        -ms-align-items: center;
+        -o-align-items: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+}
+
+
+
+ul {
+    width: 70%;
+    margin: auto;
+}
+
+
+.nav-pills .nav-link.active, .show > .nav-pills .nav-link {
+    color: #fff;
+    background-color: #694D75;
+}
+
+/*.nav-pills .nav-item.open .nav-link, .nav-pills .nav-item.open .nav-link:focus, .nav-pills .nav-item.open .nav-link:hover, .nav-pills .nav-link.active, .nav-pills .nav-link.active:focus, .nav-pills .nav-link.active:hover {
+            color: #7C4DFF;
+            
+        }*/
+
+.matchPadding {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.cardBottomPadding {
+    padding-bottom: 10px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    /*padding-left: 15px;
+    padding-right: 15px;*/
+    /*height: 100%;*/
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    color: #6c6f73;
+}
+
+
+
+/*Push the card down so that its not touching the navbar*/
+#searchSelectors {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-top: 75px;
+    margin-bottom: 30px; /* Added */
+}
+
+/*Display the navbar links inline instead of as a block*/
+.navlinks {
+    flex-direction: row;
+    /*display: inline-block;*/
+}
+/*Center the CompanyBio Model*/
+.centered-modal.in {
+    display: flex !important;
+}
+.centered-modal .modal-dialog {
+    margin: auto;
+}
+
+.rounded {
+    border-radius: 10px;
+}
+
+
+/*Card Header Colours*/
+.cardHeaderColour {
+    background: black;
+}
+
+companyMatchPadding {
+    padding-top: 200px;
+    padding-bottom: 500px;
+}
+
+.adminCardPadding {
+    padding-top: 150px;
+    padding-bottom: 500px;
+}
+.btn-space {
+    margin-right: 5px;
+}
+.no-border {
+    border: 0;
+    box-shadow: none; /* You may want to include this as bootstrap applies these styles too */
+}
+
+/*BUTTONS*/
+.btn.outline {
+    background: none;
+    padding: 12px 22px;
+}
+.btn-primary.outline {
+    border: 2px solid #694D75;
+    color: #694D75;
+}
+    .btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
+        color: #7C4DFF;
+        border-color: #7C4DFF;
+    }
+    .btn-primary.outline:active, .btn-primary.outline.active {
+        border-color: #7C4DFF;
+        color: #7C4DFF;
+        box-shadow: none;
+    }
+
+.btn-selected-page {
+    color: #7C4DFF;
+}
+
+
+.bioColour {  
+    color: #694D75;
+}
+
+
+
+.centerText1 {
+    padding-top: 250px;
+    padding-left: 350px;
+    padding-bottom:336px;
+}
+.centerText2 {
+    padding-top: 20px;
+}
+
+.backLinksPadding{
+    padding-top:100px;
+}
+
+.userFormPadding {
+    padding-top: 75px;
+}
+
+.createCompFormPadding {
+    padding-top: 75px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.adminSkillsDetailPadding {
+    padding: 50px 15px 50px 15px;
+
+}
+
+.MatchTitlePadding {
+    padding-top: 100px;
+}
+
+.backButtonPadding {
+    padding-top: 50px;
+    padding-bottom: 55px;
+}
+
+.footerPadding {
+    padding-top: 550px;
+}
+
+
+/*COLOURS*/
+
+.dark-primary-color {
+    background: #212121;
+}
+
+.default-primary-color {
+    background: #9E9E9E;
+}
+
+.light-primary-color {
+    background: #F5F5F5;
+}
+
+.text-primary-color {
+    color: #212121;
+}
+
+.accent-color {
+    background: #7C4DFF;
+}
+
+.primary-text-color {
+    color: #212121;
+}
+
+.secondary-text-color {
+    color: #757575;
+}
+
+.divider-color {
+    border-color: #BDBDBD;
+}
+
+
+.list-group-hover .list-group-item:hover {
+    color: #fff;
+    background-color: #7C4DFF;
+}
+
+
+.globalFont {
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    color: white;
+}
+.checkboxFont {
+    font-family: 'Roboto', sans-serif;
+}
+.descriptionFont {
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    /*font-size: 18px;*/
+}
+
+.compMatchTitleFont {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.iconSize {
+  height:24px;
+  width:24px;
+}
+
+.buttonFont {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+.btn-position {
+    position: fixed; /* or position: absolute; */
+    top: 0;
+    right: 0;
+}
+.btn-raise {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.btn-attention {
+    -webkit-animation-duration: 0.7s;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-iteration-count: 4;
+}
+.card-raise:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.card-bigRaise {
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); 
+}
+
+
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #616161; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+    /* The navigation menu links */
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #000000;
+        display: block;
+        transition: 0.3s
+    }
+
+        /* When you mouse over the navigation links, change their color */
+        .sidenav a:hover, .offcanvas a:focus {
+            color: #f1f1f1;
+        }
+
+    /* Position and style the close button (top right corner) */
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    /*padding: 20px;   REMOVED THIS MAYBE PUT BACK LATER*/
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+        .sidenav a {
+            font-size: 18px;
+        }
+}
+/* The side navigation menu END*/
+
+
+/*DOWN ARROW ANIMATION*/
+
+.downArrow{
+    position: center;
+    bottom: 45%;
+    left: 50%;
+}
+.bounce {
+    -moz-animation: bounce 3s infinite;
+    -webkit-animation: bounce 3s infinite;
+    animation: bounce 3s infinite;
+}
+@-moz-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -moz-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40% {
+        -moz-transform: translateY(-30px);
+        transform: translateY(-30px);
+    }
+    60% {
+        -moz-transform: translateY(-15px);
+        transform: translateY(-15px);
+    }
+}
+@-webkit-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40% {
+        -webkit-transform: translateY(-30px);
+        transform: translateY(-30px);
+    }
+    60% {
+        -webkit-transform: translateY(-15px);
+        transform: translateY(-15px);
+    }
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40% {
+        -moz-transform: translateY(-30px);
+        -ms-transform: translateY(-30px);
+        -webkit-transform: translateY(-30px);
+        transform: translateY(-30px);
+    }
+    60% {
+        -moz-transform: translateY(-15px);
+        -ms-transform: translateY(-15px);
+        -webkit-transform: translateY(-15px);
+        transform: translateY(-15px);
+    }
+}
+
+/*.card-header {
+    height: 40px;
+}*/
+
+
+
+/*CUSTOM MENU BAR*/
+.fa-2x {
+    font-size: 4em;
+}
+
+.fa {
+    position: relative;
+    display: table-cell;
+    width: 60px;
+    height: 36px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+
+.main-menu:hover, nav.main-menu.expanded {
+    width: 250px;
+    overflow: visible;
+}
+
+.main-menu {
+    background: transparent;
+    /*border-right: 1px solid #e5e5e5;*/
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 50%;
+    left: 0;
+    width: 300px;
+    overflow: hidden;
+    -webkit-transition: width .05s linear;
+    transition: width .05s linear;
+    -webkit-transform: translateZ(0) scale(1,1);
+    z-index: 1000;
+    padding-top: 10px;
+}
+
+    .main-menu > ul {
+        margin: 7px 0;
+    }
+
+    .main-menu li {
+        position: relative;
+        display: block;
+        width: 250px;
+    }
+
+        .main-menu li > a {
+            position: relative;
+            display: table;
+            border-collapse: collapse;
+            border-spacing: 0;
+            /*color: #999;*/
+            color: #000000;
+            font-family: "Roboto";
+            font-size: 14px;
+            text-decoration: none;
+            -webkit-transform: translateZ(0) scale(1,1);
+            -webkit-transition: all .1s linear;
+            transition: all .1s linear;
+        }
+
+    .main-menu .nav-icon {
+        position: relative;
+        display: table-cell;
+        width: 60px;
+        height: 36px;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 18px;
+    }
+
+    .main-menu .nav-text {
+        position: relative;
+        display: table-cell;
+        vertical-align: middle;
+        width: 190px;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .main-menu > ul.logout {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+
+.no-touch .scrollable.hover {
+    overflow-y: hidden;
+}
+
+    .no-touch .scrollable.hover:hover {
+        overflow-y: auto;
+        overflow: visible;
+    }
+
+a:hover, a:focus {
+    text-decoration: none;
+}
+
+nav {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+    nav ul, nav li {
+        outline: 0;
+        margin: 20px 0;
+        padding: 0;
+    }
+
+
+    .main-menu li:hover > a, nav.main-menu li.active > a, .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus, .no-touch .dashboard-page nav.dashboard-menu ul li:hover a, .dashboard-page nav.dashboard-menu ul li.active a {
+        color: #fff;        
+        background-color: #7C4DFF;
+    }
+
+.area {
+    /*float: left;*/
+    background: transparent;
+    width: 100%;
+    height: 100%;
+  
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+   
+}
+
+.centerPadding{
+    padding: 20px;
+}
+
+.footerVersion {
+    position: fixed; 
+    padding-left: 10px;
+    margin: 0px;
+    bottom: 0; 
+    font-size: 10px;
+}
+.footerLanguage {
+    position: fixed;
+    padding-right: 10px;
+    margin: 0px;
+    bottom: 0;
+    font-size: 10px;
+}
+
+.container6 {
+    height: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+    .container6 h2 {
+        margin: 0
+    }
+
+.competenceCard {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+}
+/* Add some padding inside the card container */
+.cardContainer {
+    padding: 2px 16px;
+}

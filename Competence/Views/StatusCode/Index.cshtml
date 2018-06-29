@@ -1,0 +1,41 @@
+﻿@model int
+@{
+    var statusCode = Model;
+
+    var statusmessage = "";
+
+    switch (statusCode)
+
+    {
+        case 400:
+            statusmessage = "Bad request: The request cannot be fulfilled due to bad syntax";
+            break;
+
+        case 403:
+            statusmessage = "Forbidden";
+            break;
+        case 404:
+            statusmessage = "Page not found";
+            break;
+        case 408:
+            statusmessage = "The server timed out waiting for the request";
+            break;
+        case 500:
+            statusmessage = "Internal Server Error - server was unable to finish processing the request";
+            break;
+        default:
+            statusmessage = "That’s odd... Something we didn't expect happened";
+            break;
+    }
+}
+
+<div class="container adminCardPadding">
+    <h1 class="display-2">Error @Model</h1>
+    <br />
+    <h2 class="display-3">@statusmessage</h2>
+    <br />
+    <div >
+        <a class="btn btn-primary outline cardBorder" asp-controller="Companies" asp-action="HomePage">Go Back</a>
+    </div>
+</div>
+        
