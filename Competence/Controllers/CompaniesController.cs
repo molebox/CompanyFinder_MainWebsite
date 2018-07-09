@@ -114,7 +114,7 @@ namespace Competence.Controllers
         /// The apps main page where the user does its search
         /// </summary>
         /// <returns></returns>
-        [Authorize(Policy = "RequireUserLoginAccess")]
+        //[Authorize(Policy = "RequireUserLoginAccess")]
         public IActionResult Search()
         {
             return View();

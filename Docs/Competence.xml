@@ -109,7 +109,7 @@
         </member>
         <member name="M:Competence.Controllers.AccountController.HomePageLogin(Competence.ViewModels.HomePageViewModel,System.String)">
             <summary>
-            Post method that checks the login for access to the search page. If login is good then the user is redirected to the search oage, if the login
+            Post method that checks the login for access to the search page. If login is good then the user is redirected to the search page, if the login
             is bad an error message is displayed
             </summary>
             <param name="homePageViewModel"></param>

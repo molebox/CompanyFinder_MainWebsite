@@ -12,7 +12,7 @@ body {
 }
 
 .searchBackground {
-    background: url('../images/laptop-from-above.jpg') center center no-repeat;
+    background: url('../images/search-background.jpeg') center center no-repeat;
     position: absolute;
     background-size: cover;
     top: 0;

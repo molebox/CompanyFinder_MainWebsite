@@ -84,14 +84,13 @@ namespace Competence.Controllers
 
         }
         /// <summary>
-        /// Post method that checks the login for access to the search page. If login is good then the user is redirected to the search oage, if the login
+        /// Post method that checks the login for access to the search page. If login is good then the user is redirected to the search page, if the login
         /// is bad an error message is displayed
         /// </summary>
         /// <param name="homePageViewModel"></param>
         /// <param name="returnUrl"></param>
         /// <returns></returns>
         [HttpPost]
-        //[AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> HomePageLogin(HomePageViewModel homePageViewModel, string returnUrl)
         {
@@ -132,7 +131,28 @@ namespace Competence.Controllers
                     return View(homePageViewModel);
                 }
             }
-            return View(homePageViewModel);
+            return View();
+
+            //if (ModelState.IsValid)
+            //{
+            //    IdentityUser user = await userManger.FindByNameAsync(homePageViewModel.SearchUsername);
+
+            //    if (user != null)
+            //    {
+            //        await signInManager.SignOutAsync();
+            //        if ((await signInManager.PasswordSignInAsync(user, homePageViewModel.SearchPassword, false, false)).Succeeded)
+            //        {
+            //            return RedirectToAction("Search", "Companies");
+            //        }
+            //        else
+            //        {
+            //            return Unauthorized();
+            //        }
+
+            //    }
+            //}
+
+            //return Unauthorized();
         }
 
         /// <summary>
