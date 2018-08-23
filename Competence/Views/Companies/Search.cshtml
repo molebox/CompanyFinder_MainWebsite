@@ -14,7 +14,7 @@
 
         </div>
 
-        <div class="filter" style="width: 40em;">
+        <div class="filter">
             <form asp-controller="Companies" asp-action="SearchResultsAsync" data-ajax="true" data-ajax-method="POST" id="liveSearch">
                 <div class="card card-bigRaise" style="background-color:white;">
                     <div class="card-header text-center infoFont" style="padding:1em;">@SharedLocalizer["Live Search"]</div>
@@ -84,7 +84,7 @@
                             treeSearchData.push(data);// push the checked object to the array
                             var nodeArray = data.nodes; //get the objects node array if it has one
 
-                            if (nodeArray != null) {
+                            if (nodeArray !== null) {
                                 nodeArray.forEach(function (item) {
                                     treeSearchData.push(item);// loop through the objects node array and add each object to the array
                                 });
@@ -100,7 +100,7 @@
                             //nodeData is the checkbox that is being un-checked
                             var nodeArray = nodeData.nodes; //get the objects node array if it has one
 
-                            if (nodeArray != null) {
+                            if (nodeArray !== null) {
                                 nodeArray.forEach(function (item) {
                                     var removed = treeSearchData.map(function (item) { return item.id }).indexOf(item.id);// find the index of the node to remove
                                     treeSearchData.splice(removed, 1);// remove the object from the array at the specified index
@@ -125,7 +125,7 @@
             $.ajax({
                 type: 'GET',
                 url: '/Companies/GetFocusNodesAsync',
-                dataType: "json",
+                dataType: "json"
             })
                 .done(function (response) {
 
@@ -141,7 +141,7 @@
                             var nodeArray = data.nodes; //get the objects node array if it has one
 
 
-                            if (nodeArray != null) {
+                            if (nodeArray !== null) {
                                 nodeArray.forEach(function (item) {
                                     treeFocusData.push(item);// loop through the objects node array and add each object to the array
                                 });
@@ -156,7 +156,7 @@
                             //nodeData is the checkbox that is being un-checked
                             var nodeArray = nodeData.nodes; //get the objects node array if it has one
 
-                            if (nodeArray != null) {
+                            if (nodeArray !== null) {
                                 nodeArray.forEach(function (item) {
                                     var removed = treeFocusData.map(function (item) { return item.id }).indexOf(item.id);// find the index of the node to remove
                                     treeFocusData.splice(removed, 1);// remove the object from the array at the specified index

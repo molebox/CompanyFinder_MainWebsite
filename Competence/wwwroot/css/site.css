@@ -2,9 +2,12 @@
 
 html,
 body {
-    height: 100%; 
-    /*overflow-x:hidden;*/
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 
 /* For mobile phones: */
 [class*="col-"] {
@@ -20,12 +23,12 @@ body {
     right: 0;
     background-attachment: fixed;
     height: 100vh;
-    overflow:auto;
+    overflow: auto;
 }
 
 .searchWrapper {
-    display: grid;  
-    grid-template-columns: 40% 60%;
+    display: grid;
+    grid-template-columns: auto 60%;
     grid-template-rows: auto;
     grid-template-areas: "filter result";
 }
@@ -33,11 +36,201 @@ body {
 .filter {
     margin: 1em;
     grid-area: filter;
-    /*position: fixed;*/
-    /*position: -webkit-sticky;*/
-    /*top: 0;*/
     height: 100vh;
+    animation-name: moveInRight; /*The name of the animation*/
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
 }
+}
+
+
+
+
+
+
+
+/*SET THE GLOBAL FONT FOR THERE PROJECT IN THE BODY TAG*/
+homePage {
+    /*font-family: "Lato", sans-serif;*/
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.header {
+    height: 95vh; /*95% of the view port*/
+
+    background: linear-gradient(to right, #414345, #232526);
+    background-image: url(../images/handshake-2.jpg);
+    background-size: cover;
+    background-position: top;
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /*cuts off a wedge at the bottom right corner*/
+    position: relative;
+}
+
+.text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%; /*In relation to the parent element*/
+    transform: translate(-50%, -50%); /*Shift 50% of element*/
+    text-align: center;
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+    backface-visibility: hidden; /*Fix to stop the animation shaking upwards after its run*/
+    margin-bottom: 60px;
+}
+
+.heading-primary-main {
+    display: block;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 35px;
+    animation-name: moveInLeft; /*The name of the animation*/
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    margin-bottom: 40px;
+    /*
+    animation-delay: 3s;
+    animation-iteration-count: 3; Amount of times the animation runs
+    */
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 17.4px;
+    animation-name: moveInRight; /*The name of the animation*/
+    animation-duration: 4s;
+    animation-timing-function: ease-out;
+}
+
+/*ANIMATIONS*/
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px); /* X = Horizontal. Positive value goes to the right and negative value goes to the left */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0); /*Back to the begnning*/
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px); /* X = Horizontal. Positive value goes to the right and negative value goes to the left */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0); /*Back to the begnning*/
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(100px); /* X = Horizontal. Positive value goes to the right and negative value goes to the left */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0); /*Back to the begnning*/
+    }
+}
+
+/*:link and visited psuedo class, special state of a selector*/
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block; /*Always do when giving padding to elements*/
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative;
+}
+
+.btn:hover {
+    transform: translateY(-3px); /*Y axis uses negative numbers to go up*/
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .2); /* X Y Blur Colour*/
+}
+
+/*When button is clicked :active*/
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2); /* X Y Blur Colour*/
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+
+.btn::after {
+    content: ""; /*Have to specify the content on a ::after psuedo element even if its empty*/
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /*Defines the position of elements if they are one on top of another*/
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+/*After the hover state*/
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; /*Fade out*/
+}
+
+.btn-animated {
+    /* animation-name: moveInBottom;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-delay: .75s; */
+    /*Short hand for the above code*/
+    animation: moveInBottom 4s ease-out .75s;
+    animation-fill-mode: backwards; /*Automatically apply the 0& keyframe from the start*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -49,82 +242,6 @@ body {
 .card{
     font-size: 1.5rem;
 }
-
-
-/*.searchResults{
-    display:grid;
-    grid-template-columns: 50% 50%;
-    grid-column-gap:2em;
-}
-
-    .searchResults > div {
-        padding: 1em;
-        margin: 1em;
-        
-    }*/
-
-
-/*.searchFilter {
-    display: grid;
-    grid-template-columns: 100%;
-    grid-gap: 1em;
-    position: sticky;
-    top: 0;
-    margin: 1em;
-    grid-area: filter;
- 
-}*/
-
-/*.filter{
-    grid-area: filter;
-}
-
-.results{
-    grid-area: results;
-}
-
-.wrapper{
-    display: grid;
-    grid-gap: 20px;
-    grid-template-areas:
-        "filter"
-        "results";
-}*/
-
-
-
-/*Mobile*/
-/*@media only screen and (min-width: 500px) {
-    .searchResults {
-        grid-template-columns: 100%;
-        grid-template-areas: 
-            "filter" 
-            "results";
-    }
-}*/
-/*Tablet*/
-/*@media only screen and (min-width: 768px) {
-    .searchResults {
-        grid-template-columns: 100%;
-        grid-template-areas: 
-            "filter" 
-            "results";
-    }
-}*/
-/*Tablet and small laptops*/
-/*@media only screen and (max-width: 992px) {
-    .searchResults {
-        grid-template-columns: 100%;
-        grid-template-areas: "filter" "results";
-    }
-}*/
-/*Desktops*/
-/*@media only screen and (min-width: 1200px) {
-    .searchResults {
-        grid-template-columns: 50% 45% 5%;
-        grid-template-areas: "filter results .";
-    }
-}*/
 
 
 .rowBackground {
@@ -202,26 +319,37 @@ body {
 
 
 
-.stage {
-    background: url("https://static.pexels.com/photos/273238/pexels-photo-273238.jpeg") center center no-repeat;
-    -ms-background-size: cover;
-    background-size: cover;
-    color: white;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    -ms-align-items: center;
-    -o-align-items: center;
-    -webkit-align-items: center;
-    align-items: center;
+/*ANIMATIONS*/
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px); /* X = Horizontal. Positive value goes to the right and negative value goes to the left */
+    }
+
+    80% {
+        transform: translateX(10px); /*Bounce a little to the right on the X axis*/
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0); /*Back to the begnning*/
+    }
 }
 
-.stage-caption {
-    font-size: 1.4rem;
-    font-weight: 200;
-    max-width: 60rem;
-    margin: 0 auto;
-    text-align: center;
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px); /* X = Horizontal. Positive value goes to the right and negative value goes to the left */
+    }
+
+    80% {
+        transform: translateX(-10px); /*Bounce a little to the right on the X axis*/
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0); /*Back to the begnning*/
+    }
 }
 
 .stage-caption h1 {
