@@ -3,8 +3,8 @@
 A website that enables a user to select from a list of competences and search for a company that matches the criteria. The main industry focus is currently IT.
 
 #### Built with:
-* .NET Core 2.0
-* Entity Framework Core 2.0
+* .NET Core 2.1
+* Entity Framework Core 2.1
 * Material Design Bootstrap
 
 #### Setup:
